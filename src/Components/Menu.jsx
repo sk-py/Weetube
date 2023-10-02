@@ -18,10 +18,14 @@ import HelpOutlineRoundedIcon from "@mui/icons-material/HelpOutlineRounded";
 import DarkModeRoundedIcon from "@mui/icons-material/DarkModeRounded";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
+import { useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
+import withTheme from "styled-components";
 
 const Container = styled.div`
   flex: 1;
-  background-color: ${({ theme }) => theme.bg};
+  background-color: ${({ theme }) => theme.bgLighter};
   color: ${({ theme }) => theme.text};
   height: 100vh;
   font-size: 15px;
@@ -51,9 +55,13 @@ const Item = styled.div`
   display: flex;
   align-items: center;
   gap: 15px;
-  padding: 7.5px 0px;
+  padding: 7.5px 0px 7.5px 5px;
   cursor: pointer;
   font-family: "Roboto", Arial, sans-serif;
+  &:hover {
+    background-color: ${({ theme }) => theme.shadow};
+    border-radius: 0.6rem;
+  }
 `;
 
 const Login = styled.div`
@@ -92,7 +100,25 @@ const Text = styled.h3`
   margin: 10px 0px;
 `;
 
-const Menu = ({ darkMode, setDarkMode }) => {
+const CustomNavLink = styled(NavLink)`
+  color: ${({ theme }) => theme.text};
+  text-decoration: none;
+
+  &.active {
+    background-color: ${({ theme }) => theme.shadow};
+  }
+  &.dorm {
+    background-color: white;
+  }
+`;
+
+const Menu = ({ darkMode, setDarkMode, theme }) => {
+  const location = useLocation();
+
+  const isLinkActive = (to) => {
+    return location.pathname === to;
+  };
+
   return (
     <Container>
       <Wrapper>
@@ -100,14 +126,25 @@ const Menu = ({ darkMode, setDarkMode }) => {
           <Img src={Weetube} />
           <h3>Weetube</h3>
         </Logo>
-        <Item>
-          <HomeRoundedIcon />
-          Home
-        </Item>
-        <Item>
-          <ExploreRoundedIcon />
-          Explore
-        </Item>
+        <CustomNavLink
+          to="/home"
+          style={isLinkActive("/home") ? { opacity: "0.6" } : { opacity: "1" }}
+        >
+          <Item>
+            <HomeRoundedIcon />
+            Home
+          </Item>
+        </CustomNavLink>
+        <CustomNavLink
+          to={"/video"}
+          style={isLinkActive("/video") ? { opacity: "0.6" } : { opacity: "1" }}
+        >
+          <Item>
+            <ExploreRoundedIcon />
+            Explore
+          </Item>
+        </CustomNavLink>
+
         <Item>
           <SubscriptionsRoundedIcon />
           Subscriptions
@@ -125,7 +162,7 @@ const Menu = ({ darkMode, setDarkMode }) => {
         <Login>
           Sign in to like videos, comment, and subscribe.
           <Button>
-            <AccountCircleRoundedIcon /> Sign in
+            <AccountCircleRoundedIcon /> SIGN IN
           </Button>
         </Login>
         <Text>More on Weetube</Text>

@@ -3,6 +3,9 @@ import Menu from "./Components/menu";
 import Navbar from "./Components/Navbar";
 import Theme from "./Utils/Theme";
 import { useState } from "react";
+
+import { Outlet } from "react-router-dom";
+
 const Container = styled.div`
   display: flex;
 `;
@@ -30,72 +33,7 @@ function App() {
         <Main>
           <Navbar />
           <Wrapper>
-            Video cards
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
+            <Outlet />
           </Wrapper>
         </Main>
       </Container>
